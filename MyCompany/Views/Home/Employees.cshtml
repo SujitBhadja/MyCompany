@@ -1,0 +1,54 @@
+﻿@model IEnumerable<EmployeeMaster>
+@{
+    ViewData["Title"] = "Employees";
+}
+<div class="row" style="margin-bottom: 16px">
+    <div class="col-md-12 col-sm-12">
+        <button class="btn btn-info" onclick="redirect()">Add Employee</button>
+    </div>
+</div>
+<table id="dataTable" class="table">
+    <thead>
+        <tr>
+            <th>Employee Name</th>
+            <th>Gender</th>
+            <th>Phone Number</th>
+            <th>Email Address</th>
+            <th>Designation</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FirstName @item.LastName</td>
+                <td>@item.Gender</td>
+                <td>@item.Phone</td>
+                <td>@item.Email</td>
+                <td>@item.Designation</td>
+                <td>
+                    <button class="btn btn-info" onclick="editItem(@item.Id)">Edit</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts{
+    <script>
+        function redirect() {
+            window.location.href = "/Home/AddEmployee";
+        }
+
+        function editItem(id) {
+            window.location.href = "/Home/UpdateEmployee/" + id;
+        }
+
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                paging: true,
+                searching: true
+            });
+        });
+    </script>
+}

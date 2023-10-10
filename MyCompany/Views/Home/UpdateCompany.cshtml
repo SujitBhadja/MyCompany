@@ -1,0 +1,77 @@
+﻿@model MyCompany.ViewModel.Company_VM
+@{
+    ViewData["Title"] = "Update Company";
+}
+
+<h3>Update Company</h3>
+<hr />
+<form asp-action="UpdateCompany" method="post">
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+                <label for="cName">Company Name:</label><span style="color: red">*</span>
+                <input type="text" asp-for="Name" class="form-control" id="cName" maxlength="200" placeholder="Company Name" required="required" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="cRegiNo">Registration No.:</label><span style="color: red">*</span>
+                <input type="text" asp-for="RegistrationNo" class="form-control" id="cRegiNo" maxlength="50" placeholder="Registration No." required="required" />
+                <span asp-validation-for="RegistrationNo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="cTypeList">Company Type:</label><span style="color: red">*</span>
+                <select asp-for="Type" asp-items="@ViewBag.Types" id="cTypeList" class="form-select"></select>
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="cPhone">Phone No.:</label><span style="color: red">*</span>
+                <input type="text" asp-for="Phone" class="form-control" id="cPhone" maxlength="20" placeholder="Phone No." required="required" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="cEmail">Email Address:</label><span style="color: red">*</span>
+                <input type="email" asp-for="Email" class="form-control" id="cEmail" maxlength="50" placeholder="Email Address" required="required" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="cFoundedDate">Founded Date:</label><span style="color: red">*</span>
+                <input type="date" asp-for="FoundedDate" class="form-control" id="cFoundedDate" placeholder="Founded Date" required="required" />
+                <span asp-validation-for="FoundedDate" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+                <label for="cWebsite">Website:</label>
+                <input type="text" asp-for="Website" class="form-control" id="cWebsite" maxlength="100" placeholder="Website (Optional)" />
+                <span asp-validation-for="Website" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="cDescription">Description:</label>
+                <textarea asp-for="Description" class="form-control" id="cDescription" placeholder="Description (Optional)"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="cAddress1">Address:</label><span style="color: red">*</span>
+                <textarea asp-for="Address" class="form-control" id="cAddress1" placeholder="Address" required="required"></textarea>
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="cDepartmentNameList">Select Departments:</label><span style="color: red">*</span>
+                <select asp-for="SelectedDepIDs" asp-items="@ViewBag.DepartmentList" class="form-control" id="cDepartmentNameList" multiple></select>
+            </div>
+
+            <div class="form-group" style="text-align: right">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,47 @@
+﻿@model MyCompany.ViewModel.Department_VM
+@{
+    ViewData["Title"] = "Update Department";
+}
+
+<h3>Update Department</h3>
+<hr />
+<form asp-action="UpdateDepartment" method="post">
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+                <label for="dName">Department Name:</label><span style="color: red">*</span>
+                <input type="text" asp-for="Name" class="form-control" id="dName" maxlength="200" placeholder="Department Name" required="required" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="cDescription">Description:</label>
+                <textarea asp-for="Description" class="form-control" id="dDescription" placeholder="Description (Optional)"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="dPhone">Phone No.:</label><span style="color: red">*</span>
+                <input type="text" asp-for="Phone" class="form-control" id="dPhone" maxlength="20" placeholder="Phone No." required="required" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="dEmail">Email Address:</label><span style="color: red">*</span>
+                <input type="email" asp-for="Email" class="form-control" id="dEmail" maxlength="50" placeholder="Email Address" required="required" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="dEstDate">Established Date:</label><span style="color: red">*</span>
+                <input type="date" asp-for="EstablishedDate" class="form-control" id="dEstDate" placeholder="Established Date" required="required" />
+                <span asp-validation-for="EstablishedDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" style="text-align: right">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<CompanyMaster>
+@{
+    ViewData["Title"] = "Company";
+}
+<div class="row" style="margin-bottom: 16px">
+    <div class="col-md-12 col-sm-12">
+        <button class="btn btn-info" onclick="redirect()">Add Company</button>
+    </div>
+</div>
+<table id="dataTable" class="table">
+    <thead>
+        <tr>
+            <th>Registration No.</th>
+            <th>Comapny Name</th>
+            <th>Company Types</th>
+            <th>Phone Number</th>
+            <th>Email Address</th>
+            <th>Website</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.RegistrationNo</td>
+                <td>@item.Name</td>
+                <td>@item.Type</td>
+                <td>@item.Phone</td>
+                <td>@item.Email</td>
+                <td>@item.Website</td>
+                <td>
+                    <button class="btn btn-info" onclick="editItem(@item.Id)">Edit</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts{
+    <script>
+        function redirect() {
+            window.location.href = "/Home/AddCompany";
+        }
+
+        function editItem(id) {
+            window.location.href = "/Home/UpdateCompany/" + id;
+        }
+
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                paging: true,
+                searching: true
+            });
+        });
+    </script>
+}

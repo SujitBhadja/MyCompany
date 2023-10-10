@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DepartmentMaster>
+@{
+    ViewData["Title"] = "Departments";
+}
+<div class="row" style="margin-bottom: 16px">
+    <div class="col-md-12 col-sm-12">
+        <button class="btn btn-info" onclick="redirect()">Add Department</button>
+    </div>
+</div>
+<table id="dataTable" class="table">
+    <thead>
+        <tr>
+            <th>Department Name</th>
+            <th>Phone Number</th>
+            <th>Email Address</th>
+            <th>Established Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Phone</td>
+                <td>@item.Email</td>
+                <td style="text-align:center">@item.EstablishedDate.Value.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <button class="btn btn-info" onclick="editItem(@item.Id)">Edit</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts{
+    <script>
+        function redirect() {
+            window.location.href = "/Home/AddDepartment";
+        }
+
+        function editItem(id) {
+            window.location.href = "/Home/UpdateDepartment/" + id;
+        }
+
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                paging: true,
+                searching: true
+            });
+        });
+    </script>
+}

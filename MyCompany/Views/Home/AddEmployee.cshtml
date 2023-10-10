@@ -1,0 +1,84 @@
+﻿@model MyCompany.ViewModel.Employee_VM
+@{
+    ViewData["Title"] = "Add Employee";
+}
+
+<h3>Add Employee</h3>
+<hr />
+<form asp-action="AddEmployee" method="post">
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+                <label for="eFName">First Name:</label><span style="color: red">*</span>
+                <input type="text" asp-for="FirstName" class="form-control" id="eFName" maxlength="200" placeholder="First Name" required="required" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="eLName">Last Name:</label><span style="color: red">*</span>
+                <input type="text" asp-for="LastName" class="form-control" id="eLName" maxlength="200" placeholder="Last Name" required="required" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Select Gender:</label><span style="color: red">*</span>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" asp-for="Gender" id="eMale" value="Male">
+                    <label class="form-check-label" for="eMale">
+                        Male
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" asp-for="Gender" id="eFemale" value="Female">
+                    <label class="form-check-label" for="eFemale">
+                        Female
+                    </label>
+                </div>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="eDOB">Date Of Birth:</label><span style="color: red">*</span>
+                <input type="date" asp-for="Dob" class="form-control" id="eDOB" placeholder="Date Of Birth" required="required" />
+                <span asp-validation-for="Dob" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="dPhone">Phone No.:</label><span style="color: red">*</span>
+                <input type="text" asp-for="Phone" class="form-control" id="dPhone" maxlength="20" placeholder="Phone No." required="required" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+                <label for="dEmail">Email Address:</label><span style="color: red">*</span>
+                <input type="email" asp-for="Email" class="form-control" id="dEmail" maxlength="50" placeholder="Email Address" required="required" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="eDesignation">Designation:</label><span style="color: red">*</span>
+                <input type="text" asp-for="Designation" class="form-control" id="eDesignation" maxlength="20" placeholder="Designation" required="required" />
+                <span asp-validation-for="Designation" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="eJoiningDate">Joining Date:</label><span style="color: red">*</span>
+                <input type="date" asp-for="JoiningDate" class="form-control" id="eJoiningDate" placeholder="Joining Date" required="required" />
+                <span asp-validation-for="JoiningDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="eAddress">Address:</label><span style="color: red">*</span>
+                <textarea asp-for="Address" class="form-control" id="eAddress" placeholder="Address" required="required"></textarea>
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" style="text-align: right">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
